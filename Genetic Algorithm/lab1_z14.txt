@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "Zla liczba argumentow"
+	exit 1
+fi
+
+if [[ ! -d $1 ]]
+then 
+	echo "nie ma katalogu $1"
+	exit 1
+fi
+
+for plik in `ls $1`
+do
+	if [[ ! -d $1/$plik ]]
+	then
+		touch -m $1/$plik
+	fi
+done
